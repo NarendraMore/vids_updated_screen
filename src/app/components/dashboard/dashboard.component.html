@@ -1,0 +1,143 @@
+<div class="dashboardDiv">
+    <div class="row searchDiv">
+        <div class="col-3">
+            <div class="input-group">
+                <input type="date" [(ngModel)]="dateForSearch" (ngModelChange)="searchByDate($event)"
+                    class="form-control dateStyle" id="date">
+
+                <span class="input-group-text clear-icon" *ngIf="dateForSearch" (click)="clearDateFilter()">
+                    &times; <!-- This is the "×" symbol representing the clear icon -->
+                </span>
+            </div>
+
+        </div>
+        <div class="col-3">
+            <input type="search" class="form-control dateStyle" [(ngModel)]="searchText" placeholder="Search..">
+        </div>
+        <div class="col-6">
+            <button class="btn cameraButton" (click)="onclickCameraStatus()" data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop">Camera
+                Status</button>
+        </div>
+    </div>
+    <hr style="margin-top: 1%;">
+
+    <div class="row dashTable">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Sr.No</th>
+                    <th scope="col">Event Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Camera No</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let event of filteredData(); let i = index">
+                    <th scope="row">{{ i + 1 + (currentPage - 1) * itemsPerPage }}</th>
+                    <td>{{ event.event }}</td>
+                    <td>{{ event.date | date : "dd/MM/yyyy" }}</td>
+                    <td>{{ event.time }}</td>
+                    <td>{{ event.cameratype }}</td>
+                    <td>{{ event.location }}</td>
+                    <td><button class="btn imageButton" (click)="onclickLatesevent(event._id, event.event)"
+                            type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+                            <span class="bi bi-image"></span>
+                        </button>
+                    </td>
+                    <td><button class="btn deleteButton" (click)="onClickfalseDetection(event._id, event)"><span
+                                class="bi bi-trash"></span></button></td>
+                </tr>
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" [class.disabled]="currentPage === 1">
+                    <a class="page-link" (click)="changePage(currentPage - 1)" tabindex="-1"
+                        style="cursor: pointer;">Previous</a>
+                </li>
+                <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+                    <a class="page-link" (click)="changePage(page)" style="cursor: pointer;">{{ page }}</a>
+                </li>
+                <li class="page-item" [class.disabled]="currentPage === totalPages">
+                    <a class="page-link" (click)="changePage(currentPage + 1)" style="cursor: pointer;">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+</div>
+
+<!-- Camera status card  -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered custom-modal-width">
+        <div class="modal-content modalStyle">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Camera Status</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sr.No</th>
+                            <th scope="col">IP Address</th>
+                            <th scope="col">Port</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let camera of CamerastatusArray; let i = index">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{ camera.ip }}</td>
+                            <td>{{ camera.port }}</td>
+                            <td>{{ camera.location }}</td>
+                            <td *ngIf="+camera.status === 1">
+                                <button class="btn activeStatus">Active</button>
+                            </td>
+                            <td *ngIf="+camera.status === 0">
+                                <button class="btn closeStatus">In Active</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <!-- <button type="button" class="btn closeButton" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn download">Download</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- image show card -->
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Detected Image</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img style="width: 100%; height: auto" class="imgScreenshot hoverclass" [src]="latestEventUrl" alt="" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn download" data-bs-dismiss="modal"
+                    (click)="onClickCancelPhoto()">Close</button>
+                <!-- <button type="button" class="btn download">Understood</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+<p-toast></p-toast>
+
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>

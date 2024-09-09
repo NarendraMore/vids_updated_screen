@@ -1,0 +1,58 @@
+.containerImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url("src/assets/images/road_PNG19.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.inputClass {
+    border-color: #05B2DF;
+    border: 1px solid #05B2DF;
+}
+
+.inputClass:focus {
+    border-color: #05B2DF;
+    box-shadow: #05B2DF;
+}
+
+.mainDiv {
+    background-color: rgba(50, 50, 50, 0.311);
+    /* Optional: to make form more readable against background */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.formDiv {
+    margin-bottom: 2rem;
+}
+
+.loginText {
+    font-size: 25px;
+    font-weight: 600;
+    background: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.loginButton {
+    background-color: #05B2DF;
+    border-color: #05B2DF;
+    font-size: large;
+}
+
+@media (max-width: 768px) {
+    .mainDiv {
+        width: 90%;
+    }
+}
+
+@media (min-width: 769px) {
+    .mainDiv {
+        width: 50%;
+    }
+}

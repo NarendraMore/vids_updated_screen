@@ -1,0 +1,223 @@
+#container {
+    display: flex;
+    max-width: 100%;
+    height: 102vh;
+    /* background-color: #000; */
+    position: static;
+
+    #sidebar {
+
+        width: 200px;
+        height: 100%;
+        background-color: #455465;
+        /* transform: translate(-100%); */
+        transition: 0.3s ease-in-out;
+        border-right: 1px solid #ccc;
+        box-shadow: 0px 4px 5px #ccc;
+
+
+
+        #menu {
+            display: flex;
+            flex-direction: column;
+            /* padding-left: 20px; */
+            margin-top: 10%;
+
+
+            a {
+                text-decoration: none;
+                /* color: #333; */
+                cursor: pointer;
+                padding: 15px;
+
+                &:hover {
+                    background-color: #05B2DF;
+                    color: white;
+                }
+            }
+
+            li {
+                text-decoration: none;
+                /* color: #333; */
+                /* border-bottom: 1px solid #ccc; */
+                padding-top: 10px;
+                padding-left: 10px;
+                list-style: none;
+                cursor: pointer;
+
+                &:hover {
+                    /* background-color: #aeacac; */
+                }
+            }
+        }
+    }
+
+    #contentContainer {
+        flex-grow: 1;
+        margin-left: -200px;
+        transition: margin-left 0.3s ease-in-out;
+
+        #header {
+            display: flex;
+            width: 100%;
+            padding: 10px 30px;
+            justify-content: space-between;
+            box-sizing: border-box;
+            box-shadow: 0px 4px 4px #ccc;
+
+            #logo {
+                font-family: Neue Helvetica, helvetica, sans-serif;
+                font-size: 1.2rem;
+                font-style: normal;
+                font-weight: 500;
+                letter-spacing: .1666666667em;
+                line-height: 1.2916666667em;
+                text-transform: uppercase;
+                margin-top: 1%;
+
+                svg {
+                    cursor: pointer;
+                }
+            }
+        }
+
+        #content {
+            padding: 20px;
+
+            /* background-color: #f7eaea; */
+        }
+    }
+
+    &.sidebarActive {
+        #sidebar {
+            transform: translate(0);
+        }
+
+        #contentContainer {
+            margin-left: 0;
+        }
+    }
+}
+
+.nav-link {
+    color: #888;
+    /* padding: 10px 15px; */
+    margin: 10px 3px;
+    position: relative;
+    display: inline-flex;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.nav-link :hover{
+    color: #1dc7ea;
+}
+
+::ng-deep .panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    border: none;
+    width: auto;
+}
+
+.panel.active {
+    transition: 1.5 ease-in-out;
+    max-height: 2000px;
+    /* Adjust according to your content height */
+}
+
+#footer {
+    display: flex;
+    height: 5%;
+    justify-content: space-between;
+    box-sizing: border-box;
+    box-shadow: 7px 0px 6px #ccc;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+
+}
+
+#menu {
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+#menu .accordion.active,
+#menu .accordion.active:hover {
+    background-color: #05B2DF;
+    color: FFFFFF;
+
+}
+
+
+#menu .accordion {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: roboto, helvetica neue, Arial, sans-serif;
+    border-radius: 4px;
+    opacity: 1;
+    font-weight: 550;
+    margin-bottom: 2%;
+
+
+}
+
+#menu li.active {
+    /* background-color: #9f9fba;  */
+    color: #05B2DF;
+}
+
+#menu li {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: small;
+
+}
+
+.logoText {
+    font-size: 22px;
+    /* color: white; */
+    text-transform: uppercase;
+    font-weight: 500;
+    /* background: linear-gradient(to right, rgb(255, 238, 0), rgb(255, 81, 0)); */
+    color: white;
+    /* -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+
+
+}
+
+.logoBlock {
+    margin-top: 5%;
+    justify-content: center;
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    height: 48px;
+    background-color: #f7f7f8;
+    background-color:#455465;
+}
+.cicleGradient1 {
+    position: absolute;
+    top: -50px;
+    transform: translate(50%, 40%);
+    filter: blur(100px);
+    opacity: 80%;
+    border-top-left-radius: 60%;
+    width: 100px;
+    height: 430px;
+    background: linear-gradient(to top right, #455465, #1b74c3);
+}
+.cicleGradient {
+    position: absolute;
+    top: -50px;
+    /* right: 0px; */
+    filter: blur(100px);
+    opacity: 60%;
+    border-top-left-radius: 60%;
+    width: 100px;
+    height: 430px;
+    background: linear-gradient(to top right, #455465, #06c6f6);
+}

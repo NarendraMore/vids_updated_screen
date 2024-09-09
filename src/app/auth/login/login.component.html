@@ -1,0 +1,31 @@
+<div class="containerImage">
+    <div class="mainDiv">
+        <!-- <marquee behavior="" direction=""> Well come to Vehicle Incident System..</marquee> -->
+        <div class="formDiv">
+            <h2 class="loginText">Login
+                Here</h2>
+        </div>
+        <form action="" [formGroup]="project" autocomplete="off">
+            <p>
+                <span class="p-fluid">
+                    <label for="username" style="font-weight: 540; color: rgb(0, 0, 0);line-height: 10px;">User Name /
+                        Email</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control inputClass" aria-label="Default"
+                            aria-describedby="inputGroup-sizing-default" formControlName="username"
+                            (keydown.enter)="onSave()">
+                    </div>
+                    <small *ngIf="!project.get('username')?.valid && project.get('username')?.touched">
+                        <span style="color: rgb(255, 0, 0)"> Please enter User Name. </span>
+                    </small>
+                </span>
+            </p>
+        </form>
+        <p-divider></p-divider>
+
+        <div class="p-fluid" style="text-align: center">
+            <button type="button" (click)="onSave()" [disabled]="!project.valid"
+                class="btn loginButton">Login</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<div id="container" class="sidebarActive">
+    <!-- <div class="cicleGradient1"></div>
+    <div class="cicleGradient"></div> -->
+    <div id="sidebar" [style.width]="isSidebarCollapsed ? '0' : '17%'">
+      <div [style.display]="isSidebarCollapsed ? 'none' : 'block'">
+        <div class="logoBlock">
+          <span class="logoText">VIDS</span>
+          <!-- <img src="assets/images/AnemoiLogo.png" width="40%" alt="" /> -->
+        </div>
+        <div id="menu">
+          <a class="accordion" [class.active]="activePanel === 'total'" (click)="togglePanel('total')" [routerLink]="dashboard">Dashboard</a>
+        
+          <a class="accordion" [class.active]="activePanel === 'rhs'" (click)="togglePanel('rhs')">Vehicle Detection</a>
+          <div class="panel" [ngClass]="{ active: activePanel === 'rhs' }">
+            <ul>
+              <li [class.active]="activeMenu === 'illegal'" [routerLink]="['/sidebar/illegal']">Illegal Parking</li>
+              <li [class.active]="activeMenu === 'wrong'" [routerLink]="['/sidebar/wrong']">Wrong Side</li>
+              <li [class.active]="activeMenu === 'person'" [routerLink]="['/sidebar/person']">Person cross</li>
+              <li [class.active]="activeMenu === 'overspeed'" [routerLink]="['/sidebar/overspeed']">Overspeed</li>
+              <li [class.active]="activeMenu === 'speed'" [routerLink]="['/sidebar/speed']">Speed Drop</li>
+              <li [class.active]="activeMenu === 'trip'" [routerLink]="['/sidebar/trip']">Tripe wire</li>
+            </ul>
+          </div>
+        
+          <a class="accordion" [class.active]="activePanel === 'lhs'" (click)="togglePanel('lhs')">Safety Detection</a>
+          <div class="panel" [ngClass]="{ active: activePanel === 'lhs' }">
+            <ul>
+              <li [class.active]="activeMenu === 'object'" (click)="displayMenu('object')" [routerLink]="['/sidebar/object']">Object Detection</li>
+              <li [class.active]="activeMenu === 'fire'" (click)="displayMenu('fire')" [routerLink]="['/sidebar/fire']">Fire Detection</li>
+              <li [class.active]="activeMenu === 'fog'" (click)="displayMenu('fog')" [routerLink]="['/sidebar/fog']">Fog Detection</li>
+              <li [class.active]="activeMenu === 'animal'" (click)="displayMenu('animal')" [routerLink]="['/sidebar/animal']">Animal Detection</li>
+            </ul> 
+          </div>
+          <a class="accordion" [class.active]="activePanel === 'camera'" (click)="togglePanel('camera')">Camera Service</a>
+          <div class="panel" [ngClass]="{ active: activePanel === 'camera' }">
+            <ul>
+              <li [class.active]="activeMenu === 'live'" [routerLink]="['/sidebar/live']">Live Camera</li>
+              <li [class.active]="activeMenu === 'camera'" [routerLink]="['/sidebar/camera']">Camera Tempering</li>
+            </ul>
+          </div>
+        </div>
+        
+        
+  
+      </div>
+    </div>
+    <div id="contentContainer">
+      <div id="header">
+        <div id="logo">
+          <span (click)="toggleSidebar()"><img style="cursor: pointer" src="assets/images/menuicon.svg" alt="" />
+          </span>
+        </div>
+        <span id="logo" style="font-weight: 500;">Vehicle Incident System</span>
+        <a data-rb-event-key="#pablo" class="m-0 nav-link active" (click)="logOut()"><span class="no-icon">Log out</span></a>
+      </div>
+      <div id="content">
+        <router-outlet></router-outlet>
+      </div>
+      <div id="footer">
+  
+      </div>
+    </div>
+  </div>

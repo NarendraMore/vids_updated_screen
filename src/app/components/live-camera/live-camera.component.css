@@ -1,0 +1,28 @@
+.cameraDiv {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 75vh;
+    background-color: #DFE0E5;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+/* .camera1 {
+    background-color: #DFE0E5;
+  
+}
+
+.camera2 {
+    background-color: #DFE0E5;
+} */
+
+.canvaasStyle {
+    height: 150px;
+    width: 100%;
+    border: 1px solid #707070;
+    border-color: #05B2DF;
+}
+.locationStyle{
+    font-weight: 500;
+    line-height: 20px;
+}

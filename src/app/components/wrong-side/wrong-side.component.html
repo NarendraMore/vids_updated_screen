@@ -1,0 +1,202 @@
+<div class="maincontainer">
+    <div class="backgroundImage">
+        <div class="imageText">
+            <div class="heading-teaxt" style="text-align: center;">Wrong Side</div>
+        </div>
+        <div class="actionDiv row">
+            <div class="col-3">
+                <!-- <label for="exampleFormControlInput1" class="form-label">Email address</label> -->
+                <input type="date" class="form-control dateStyle" id="date">
+            </div>
+            <div class="col-3">
+                <div class="input-group">
+                    <input type="date" [(ngModel)]="dateForSearch" (ngModelChange)="searchByDate($event)"
+                        class="form-control dateStyle" id="date">
+                    <span class="input-group-text clear-icon" *ngIf="dateForSearch" (click)="clearDateFilter()">
+                        &times; <!-- This is the "×" symbol representing the clear icon -->
+                    </span>
+                </div>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn downloadButton" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop">
+                    <i style="color: #05B2DF;" class="bi bi-download"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="tableDiv">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Sr.No</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Event</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Camera No</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Action</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let wrong of filteredData(); let i = index">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{ wrong.date | date : "dd-MMM yyyy" }}</td>
+                    <td>{{wrong.event}}</td>
+                    <td>{{ wrong.time }}</td>
+                    <td>{{ wrong.cameratype }}</td>
+                    <td>{{ wrong.location }}</td>
+                    <td>
+                        <button class="btn imageButton" (click)="onClickShowphoto(wrong._id)" type="button"
+                            data-bs-toggle="modal" data-bs-target="#staticBackdrop1"><span class="bi bi-image"></span>
+                        </button> &nbsp;
+                        <button (click)="onClickShowwrongsidevideo(wrong._id, wrong.name)" class="btn imageButton"
+                            type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop2"><span
+                                class="bi bi-camera-video"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" [class.disabled]="currentPage === 1">
+                    <a class="page-link" (click)="changePage(currentPage - 1)" tabindex="-1"
+                        style="cursor: pointer;">Previous</a>
+                </li>
+                <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+                    <a class="page-link" (click)="changePage(page)" style="cursor: pointer;">{{ page }}</a>
+                </li>
+                <li class="page-item" [class.disabled]="currentPage === totalPages">
+                    <a class="page-link" (click)="changePage(currentPage + 1)" style="cursor: pointer;">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+</div>
+
+
+<!-- downlod card  -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content modalStyle">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Wrong Side</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" [formGroup]="downloadForm">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="">
+                                <label for="exampleInputEmail1" class="form-label">Start Date <span
+                                        style="color: red">*</span></label>
+                                <input type="date" class="form-control inputStyle" formControlName="startDate"
+                                    dateFormat="yy-mm-dd" required inputId="dateformat" (change)="onDateChange1($event)"
+                                    aria-describedby="">
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="">
+                                <label for="exampleInputEmail1" class="form-label">End Date <span
+                                        style="color: red">*</span></label>
+                                <input type="date" class="form-control inputStyle" formControlName="endDate"
+                                    [max]="today" required inputId="dateformat1" (change)="onDateChange($event)"
+                                    aria-describedby="">
+                            </div>
+
+                        </div>
+                        <div class="col-4">
+                            <label for="exampleInputEmail1" class="form-label">Choose Camera <span
+                                    style="color: red">*</span></label>
+                            <select id="locationSelect" class="form-select inputStyle" formControlName="cameratype"
+                                (onChange)="onclickcameraEvent($event)">
+                                <option value="">Select Camera</option>
+                                <option *ngFor="let cameraNames of cameraType" [value]="cameraNames.cameraTypes">{{
+                                    cameraNames.cameraTypes
+                                    }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="" class="form-label">Start Time<span style="color: red">*</span></label>
+                            <input type="date" class="form-control inputStyle" pInputText formControlName="startTime"
+                                ngClass="formInput" type="time" required>
+                        </div>
+                        <div class="col-4">
+                            <label for="" class="form-label">End Time<span style="color: red">*</span></label>
+                            <input type="date" class="form-control inputStyle" pInputText formControlName="endTime"
+                                ngClass="formInput" type="time" required>
+                        </div>
+                        <div class="col-4">
+                            <label for="exampleInputEmail1" class="form-label">Choose Format <span
+                                    style="color: red">*</span></label>
+                            <select id="locationSelect" class="form-select inputStyle" formControlName="formate"
+                                (change)="onDropdownChange($event)">
+                                <option value="">Select Camera</option>
+                                <option *ngFor="let formates of formate" [value]="formates.formates">
+                                    {{ formates.formates }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Download</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- image show card -->
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Detected Image</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img style="width: 100%; height: auto" class="imgScreenshot hoverclass" [src]="wrongSideImageUrl"
+                    alt="" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn download" (click)="onClickCanclePhoto()"
+                    data-bs-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn download">Understood</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- video show card -->
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Detected Video</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <video #videoPlayer width="470" height="300" controls autoplay>
+                    <source [src]="wrongSideVideoUrl" type="video/mp4" />
+                </video>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="onClickCanclevideo()" class="btn download"
+                    data-bs-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn download">Understood</button> -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,138 @@
+.dateStyle {
+    border-color: #05B2DF;
+    box-shadow: 0px 4px 4px #ccc;
+}
+.cameraButton{
+    background-color: #05B2DF;
+    color: white;
+    float: right;
+}
+.heading-teaxt {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 15px;
+}
+
+.actionDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15%;
+}
+
+.tableDiv {
+    padding-top: 2%;
+}
+
+.dateStyle {
+    border-color: #05B2DF;
+    box-shadow: 0px 4px 4px #ccc;
+}
+
+.downloadButton {
+    border-color: #05B2DF;
+    box-shadow: 0px 4px 4px #ccc;
+}
+
+
+/* Change the text color and border color for the pagination links */
+.pagination .page-link {
+    color: #05B2DF;
+    /* Text color */
+    border-color: #05B2DF;
+    /* Border color */
+}
+
+/* Change the background color on hover and active state */
+.pagination .page-link:hover {
+    background-color: #05B2DF;
+    /* Background color on hover */
+    color: white;
+    /* Text color on hover */
+    border-color: #05B2DF;
+    /* Border color on hover */
+}
+
+/* Change the color for the active page */
+.pagination .page-item.active .page-link {
+    background-color: #05B2DF;
+    /* Background color for active page */
+    border-color: #05B2DF;
+    /* Border color for active page */
+    color: white;
+    /* Text color for active page */
+}
+
+/* Change the color for disabled state */
+.pagination .page-item.disabled .page-link {
+    color: #6c757d;
+    /* Text color for disabled state */
+    border-color: #6c757d;
+    /* Border color for disabled state */
+}
+
+.modalStyle {
+    background-color: #ffffff;
+}
+
+.modal-title {
+    /* color: white;    */
+    font-weight: 600;
+    line-height: 20px;
+
+}
+.modal-body{
+   
+}
+/* For the Close button */
+.closeButton {
+    color: #05B2DF; /* Text color */
+    border-color: #05B2DF; /* Border color */
+}
+.download{
+    background-color: #05B2DF;
+    font-weight: 400;
+    color: white;
+}
+.custom-modal-width {
+    width: 700px;
+    max-width: none;
+}
+.imageButton{
+    color: #05B2DF;
+    border-color: #05B2DF;
+}
+.deleteButton{
+    color: #05B2DF;
+    border-color: #05B2DF;
+}
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.clear-icon {
+  cursor: pointer;
+  position: absolute;
+  right: 0px;
+  color: #000000; /* or whatever color you prefer */
+  background-color: white;
+  border-color: #05B2DF;
+  border-radius: 10%;
+}
+.btn-close{
+    /* display: none; */
+}
+.activeStatus{
+    border-color: #24be01;
+    background-color: #24be01;
+    color: white;
+}
+.closeStatus{
+    border-color: #cf0505;
+    background-color: #cf0505;
+    color: white;
+}
+
+

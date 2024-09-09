@@ -1,0 +1,113 @@
+/* .backgroundImage {
+    background-image: url('src/assets/images/illegal-img.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 35vh;
+    width: 100%;
+    display: flex   ;
+} */
+.imageText {
+    padding-bottom: 2%;
+    /* background-color: rgba(0, 0, 0, 0.7); */
+    width: 100%;
+}
+
+.heading-teaxt {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 15px;
+}
+
+.actionDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15%;
+}
+
+.tableDiv {
+    padding-top: 2%;
+}
+
+.dateStyle {
+    border-color: #05B2DF;
+    box-shadow: 0px 4px 4px #ccc;
+}
+
+.downloadButton {
+    border-color: #05B2DF;
+    box-shadow: 0px 4px 4px #ccc;
+}
+.download{
+    background-color: #05B2DF;
+    font-weight: 400;
+    color: white;
+}
+.closeButton {
+    color: white; /* Text color */
+    border-color: #05B2DF; /* Border color */
+}
+
+/* Change the text color and border color for the pagination links */
+.pagination .page-link {
+    color: #05B2DF;
+    /* Text color */
+    border-color: #05B2DF;
+    /* Border color */
+}
+
+/* Change the background color on hover and active state */
+.pagination .page-link:hover {
+    background-color: #05B2DF;
+    /* Background color on hover */
+    color: white;
+    /* Text color on hover */
+    border-color: #05B2DF;
+    /* Border color on hover */
+}
+
+/* Change the color for the active page */
+.pagination .page-item.active .page-link {
+    background-color: #05B2DF;
+    /* Background color for active page */
+    border-color: #05B2DF;
+    /* Border color for active page */
+    color: white;
+    /* Text color for active page */
+}
+
+/* Change the color for disabled state */
+.pagination .page-item.disabled .page-link {
+    color: #6c757d;
+    /* Text color for disabled state */
+    border-color: #6c757d;
+    /* Border color for disabled state */
+}
+
+.modalStyle {
+    background-color: #455465;
+}
+
+.modal-title {
+    color: white;
+    font-weight: 600;
+    line-height: 20px;
+
+}
+.modal-body{
+    
+}
+.imageButton{
+    color: #05B2DF;
+    border-color: #05B2DF;
+}
+.custom-modal-width {
+    width: 800px;
+    max-width: none;
+    margin-left: 25%;
+}
+.dateStyle {
+    border-color: #05B2DF;
+    box-shadow: 0px 4px 4px #ccc;
+}
